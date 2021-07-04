@@ -7,10 +7,25 @@
 using namespace std;
 
 bool valid(string s){
+  /* A moderate solution to the probem can be obtained by understanding the
+  conditions that make up a number from the example and then using a brute force
+  approach to rule out everything that is not a number. The solution is acceptable
+  and runs with O(n) time complexity. It s fairly diffiult to improve upon this
+  time complexity but the code that is presented below can be further modified to
+  achieve better space complexity and methodology.
+  */
   int n = s.length();
-  int pos = 0, neg = 0;
-  int e = 0, poi = 0;
-  int num = 0;
+
+  int pos = 0, neg = 0; //represents the positive and negative signs in a number.
+  // These are only accepatable at the start of the string and the power of e.
+
+  int e = 0, poi = 0; //represent the count of e and decimal in the string. A
+  //decimal point is only acceptable before a e in the string. E is necessarily
+  // followed by an integer
+
+  int num = 0; //represents the count of integers in the string. A valid number
+  //needs to have this value > 0.
+
   for(int i = 0; i<n; i++){
     if(s[i]=='e'||s[i]=='E'){
       if(num == 0) return false;
