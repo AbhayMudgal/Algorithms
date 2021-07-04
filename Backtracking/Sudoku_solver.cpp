@@ -1,7 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define N 9
+
 void print(int grid[N][N]){
+  //prints the sudoku grid
   for (int i = 0; i < N; i++)
     {
         for (int j = 0; j < N; j++)
@@ -10,7 +12,7 @@ void print(int grid[N][N]){
     }
 }
 
-bool safe(int grid[N][N], int row, int col, int num){
+bool isSafe(int grid[N][N], int row, int col, int num){
 
 //checking row for repeating values
   for (int x = 0; x<N; x++){
@@ -49,7 +51,7 @@ bool solveSudoku(int grid[N][N], int row, int col){
   }
 
   for (int i = 1; i<=N; i++){
-    if (safe(grid, row, col, i)){
+    if (isSafe(grid, row, col, i)){
       grid[row][col] = i;
       if (solveSudoku(grid, row, col+1))
         return true;
